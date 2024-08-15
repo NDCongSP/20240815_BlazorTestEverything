@@ -31,13 +31,13 @@ namespace BlazorAppASM.Pages
             if (_status < 2) _status += 1;
             else _status = 0;
 
-            _notificationService.Notify(new NotificationMessage
-            {
-                Severity = NotificationSeverity.Info,
-                Summary = "Info",
-                Detail = text,
-                Duration = 2000
-            });
+            //_notificationService.Notify(new NotificationMessage
+            //{
+            //    Severity = NotificationSeverity.Info,
+            //    Summary = "Info",
+            //    Detail = text,
+            //    Duration = 2000
+            //});
         }
 
         string ToCaseSensitiveResourceName(string caseInsensitiveName)
