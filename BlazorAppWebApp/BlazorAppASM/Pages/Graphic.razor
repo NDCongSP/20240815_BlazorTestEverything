@@ -4,9 +4,15 @@
     <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Center">
         <RadzenButton Click=@(async args => OnClick("Success")) Text="Change" Icon="add_circle" 
             ButtonStyle="ButtonStyle.Primary" />
-        @((MarkupString)_svg1)
+        <RadzenRow>
+            <RadzenColumn SizeXS="12" SizeMD="6" class="rz-mx-auto">
+                @((MarkupString)_svg1)
+            </RadzenColumn>
+            <RadzenColumn SizeXS="12" SizeMD="6" class="rz-mx-auto">
+                @((MarkupString)_svgMotor)
+            </RadzenColumn>
+        </RadzenRow>
         @((MarkupString)_svg)
-       
     </RadzenStack>
 </RadzenPanel>
 

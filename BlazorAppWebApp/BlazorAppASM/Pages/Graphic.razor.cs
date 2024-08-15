@@ -6,7 +6,7 @@ namespace BlazorAppASM.Pages
 {
     public partial class Graphic
     {
-        private string _svg,_svg1;
+        private string _svg, _svg1, _svgMotor;
         private int _status = 0;
 
         protected override void OnInitialized()
@@ -20,6 +20,11 @@ namespace BlazorAppASM.Pages
             stream1.Seek(0, SeekOrigin.Begin);
             StreamReader reader1 = new StreamReader(stream1);
             _svg1 = reader1.ReadToEnd();
+
+            using var stream2 = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.images.motor.svg");
+            stream1.Seek(0, SeekOrigin.Begin);
+            reader1 = new StreamReader(stream2);
+            _svgMotor = reader1.ReadToEnd();
 
             base.OnInitialized();
         }

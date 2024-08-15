@@ -11,11 +11,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="images\motor.svg" />
+    <None Remove="images\scada.svg" />
     <None Remove="images\twogears.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="images\bitmapLayout.svg" />
+    <EmbeddedResource Include="images\motor.svg" />
+    <EmbeddedResource Include="images\scada.svg" />
     <EmbeddedResource Include="images\twogears.svg" />
   </ItemGroup>
 
