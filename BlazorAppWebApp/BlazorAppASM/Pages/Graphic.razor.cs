@@ -1,11 +1,12 @@
 ﻿using Microsoft.JSInterop;
 using Radzen;
+using System.Reflection;
 
 namespace BlazorAppASM.Pages
 {
     public partial class Graphic
     {
-        private string _svg;
+        private string _svg,_svg1;
         private int _status = 0;
 
         protected override void OnInitialized()
@@ -14,6 +15,12 @@ namespace BlazorAppASM.Pages
             stream.Seek(0, SeekOrigin.Begin);
             StreamReader reader = new StreamReader(stream);
             _svg = reader.ReadToEnd();
+
+            using var stream1 = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.images.twogears.svg");
+            stream1.Seek(0, SeekOrigin.Begin);
+            StreamReader reader1 = new StreamReader(stream1);
+            _svg1 = reader1.ReadToEnd();
+
             base.OnInitialized();
         }
 
@@ -27,10 +34,28 @@ namespace BlazorAppASM.Pages
             _notificationService.Notify(new NotificationMessage
             {
                 Severity = NotificationSeverity.Info,
-                Summary = "Error",
+                Summary = "Info",
                 Detail = text,
                 Duration = 2000
             });
+        }
+
+        string ToCaseSensitiveResourceName(string caseInsensitiveName)
+        {
+            // caseInsensitiveName is "Foo.xml".
+            // The assembly contains the embedded file 'foo.xml'.
+            var assembly = Assembly.GetExecutingAssembly();
+            var names = assembly.GetManifestResourceNames();
+
+            foreach (var name in names)
+            {
+                if (String.Equals(name, caseInsensitiveName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return name;
+                }
+            }
+
+            return null;
         }
     }
 }

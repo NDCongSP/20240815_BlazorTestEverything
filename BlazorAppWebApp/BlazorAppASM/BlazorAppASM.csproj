@@ -11,7 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="images\twogears.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="images\bitmapLayout.svg" />
+    <EmbeddedResource Include="images\twogears.svg" />
   </ItemGroup>
 
   <ItemGroup>

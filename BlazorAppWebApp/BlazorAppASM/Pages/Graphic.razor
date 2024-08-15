@@ -2,9 +2,11 @@
 
 <RadzenPanel class="rz-p-4 rz-border-radius-2 rz-mx-auto">
     <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Center">
-        <RadzenButton Click=@(async args => OnClick("Primary button with text and icon")) Text="Add New" Icon="add_circle" 
+        <RadzenButton Click=@(async args => OnClick("Success")) Text="Add New" Icon="add_circle" 
             ButtonStyle="ButtonStyle.Primary" />
+        @((MarkupString)_svg1)
         @((MarkupString)_svg)
+       
     </RadzenStack>
 </RadzenPanel>
 
