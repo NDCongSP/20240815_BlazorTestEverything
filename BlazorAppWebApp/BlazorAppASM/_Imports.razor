@@ -1,0 +1,23 @@
+﻿@using System.Net.Http
+@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.AspNetCore.Components.WebAssembly.Http
+@using Microsoft.JSInterop
+@using BlazorAppASM
+@using BlazorAppASM.Layout
+@using Radzen
+@using Radzen.Blazor
+
+@*NotificationService*@
+@inject NotificationService _notificationService
+@*show form*@
+@inject DialogService _dialogService
+@inject TooltipService _tooltipService
+@*redirect*@
+@inject NavigationManager _navigation
+@inject IJSRuntime _jsRuntime
+
+@inject ThemeService _theme
