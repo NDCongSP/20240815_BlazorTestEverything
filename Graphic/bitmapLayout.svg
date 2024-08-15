@@ -4423,11 +4423,14 @@
            id="path762"
            d="m 1558,3894 h 139 v 91 h -139 v -91"
            style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           transform="matrix(0.16,0,0,-0.16,0,793.33333)" /><path
-           id="conveter1"
-           d="m 1558,4218 h 139 v 91 h -139 v -91"
-           style="display:inline;mix-blend-mode:normal;fill:#002da9;fill-opacity:1;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           transform="matrix(0.16,0,0,-0.16,0,793.33333)" /><path
+           transform="matrix(0.16,0,0,-0.16,0,793.33333)" />
+           <path
+             id="conveterQuang"
+             d="m 1558,4218 h 139 v 91 h -139 v -91"
+             style="display:inline;mix-blend-mode:normal;fill:#002da9;fill-opacity:1;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             transform="matrix(0.16,0,0,-0.16,0,793.33333)" >
+           </path>
+           <path
            id="path764"
            d="m 1372,4633 h 511 v -134 h -511 v 134"
            style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
