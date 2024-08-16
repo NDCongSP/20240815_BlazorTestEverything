@@ -1,4 +1,4 @@
-function BlazorChange1(objId, status) {
+﻿function BlazorChange1(objId, status) {
     if (status == 0) {
         document.getElementById(objId).style.fill = "gray";
         document.getElementById("gear_11").style.fill = "gray";
@@ -79,6 +79,7 @@ function UpdateUI(status,mSpeed) {
     document.getElementById("tank").style.zIndex = 1;    
 }
 
+//đc gọi ở sự kiện onclick trong cái ảnh SVG, element nào dùng thì thêm onclick vào rồi tạo funtion tương ứng.
 function testClick(e) {
     console.log(e)
     console.log(e.srcElement.id)
