@@ -78,3 +78,9 @@ function UpdateUI(status,mSpeed) {
     document.getElementById("tspan1").textContent = Math.round(mSpeed,2);
     document.getElementById("tank").style.zIndex = 1;    
 }
+
+function testClick(e) {
+    console.log(e)
+    console.log(e.srcElement.id)
+    DotNet.invokeMethodAsync('BlazorAppASM', 'Click', e.srcElement.id);
+}

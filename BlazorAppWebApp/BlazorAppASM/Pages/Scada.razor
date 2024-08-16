@@ -1,11 +1,48 @@
 ﻿@page "/"
+@implements IAsyncDisposable
 
 <RadzenPanel class="rz-p-4 rz-border-radius-2 rz-mx-4">
-       @*  <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
-            <RadzenColumn SizeXS="12" class="rz-mx-auto">
-                @((MarkupString)_svg)
-            </RadzenColumn>
-        </RadzenRow> *@
+    @*  <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+    <RadzenColumn SizeXS="12" class="rz-mx-auto">
+    @((MarkupString)_svg)
+    </RadzenColumn>
+    </RadzenRow> *@
+    <div @ref=elementRef>
         @((MarkupString)_svg)
+    </div>
 </RadzenPanel>
+
+@code {
+    private IJSObjectReference? module;
+    private DotNetObjectReference<Scada>? objRef;
+    private ElementReference elementRef;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            module = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./js/scada.js");
+            objRef = DotNetObjectReference.Create(this);
+
+            await module.InvokeVoidAsync("assignDotNetHelper", elementRef, objRef);
+            await module.InvokeVoidAsync("addHandlers", elementRef);
+        }
+    }
+
+    [JSInvokable]
+    public void ScadaTestClick(string id)
+    {
+        StateHasChanged();
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        if (module is not null)
+        {
+            await module.DisposeAsync();
+        }
+
+        objRef?.Dispose();
+    }
+}
 
