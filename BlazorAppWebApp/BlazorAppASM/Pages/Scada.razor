@@ -13,6 +13,7 @@
 </RadzenPanel>
 
 @code {
+    //cách để gọi sự kiện khi nhấn vào vị trí bất kỳ của ảnh trên web
     private IJSObjectReference? module;
     private DotNetObjectReference<Scada>? objRef;
     private ElementReference elementRef;
@@ -32,6 +33,14 @@
     [JSInvokable]
     public void ScadaTestClick(string id)
     {
+        _notificationService.Notify(new NotificationMessage
+        {
+           Severity = NotificationSeverity.Info,
+                Summary = $"You just pressed {id}",
+           Detail = id,
+           Duration = 2000
+        });
+
         StateHasChanged();
     }
 

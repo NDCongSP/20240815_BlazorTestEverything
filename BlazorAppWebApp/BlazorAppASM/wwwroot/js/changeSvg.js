@@ -81,7 +81,7 @@ function UpdateUI(status,mSpeed) {
 
 //đc gọi ở sự kiện onclick trong cái ảnh SVG, element nào dùng thì thêm onclick vào rồi tạo funtion tương ứng.
 function testClick(e) {
-    console.log(e)
-    console.log(e.srcElement.id)
+    //console.log(e)
+    //console.log(e.srcElement.id)
     DotNet.invokeMethodAsync('BlazorAppASM', 'Click', e.srcElement.id);
 }
