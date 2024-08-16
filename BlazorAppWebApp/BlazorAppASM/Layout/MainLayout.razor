@@ -8,7 +8,9 @@
             <RadzenColumn Size="5">
                 <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0">
                     <RadzenSidebarToggle Click="@(() => sidebar1Expanded = !sidebar1Expanded)" />
-                    <RadzenLabel Text="Header" />
+                    <RadzenImage Path="images/logo.svg" style="width: 40px; height: 40px;" class="rz-mr-4"/>
+                    <RadzenTabs />
+                    <RadzenLabel Text="Demo Web SCADA" />
                 </RadzenStack>
             </RadzenColumn>
             <RadzenColumn Size="7">
@@ -28,7 +30,7 @@
     </RadzenBody>
     <RadzenFooter>
         <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
-            <RadzenLabel>© 2024 Phuc Thinh Automation Solution Ltd. All Rights Reserved.</RadzenLabel>
+            <RadzenLabel>© 2024 Phuc Thinh Automation Solution Co., Ltd. All Rights Reserved.</RadzenLabel>
         </RadzenStack>
     </RadzenFooter>
 </RadzenLayout>

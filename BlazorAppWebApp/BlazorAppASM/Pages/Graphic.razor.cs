@@ -11,17 +11,17 @@ namespace BlazorAppASM.Pages
 
         protected override void OnInitialized()
         {
-            using var stream = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.images.bitmapLayout.svg");
+            using var stream = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.resource.bitmapLayout.svg");
             stream.Seek(0, SeekOrigin.Begin);
             StreamReader reader = new StreamReader(stream);
             _svg = reader.ReadToEnd();
 
-            using var stream1 = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.images.twogears.svg");
+            using var stream1 = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.resource.twogears.svg");
             stream1.Seek(0, SeekOrigin.Begin);
             StreamReader reader1 = new StreamReader(stream1);
             _svg1 = reader1.ReadToEnd();
 
-            using var stream2 = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.images.motor.svg");
+            using var stream2 = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.resource.motor.svg");
             stream1.Seek(0, SeekOrigin.Begin);
             reader1 = new StreamReader(stream2);
             _svgMotor = reader1.ReadToEnd();

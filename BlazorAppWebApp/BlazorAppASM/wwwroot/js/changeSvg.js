@@ -76,5 +76,5 @@ function UpdateUI(status,mSpeed) {
     }
 
     document.getElementById("tspan1").textContent = Math.round(mSpeed,2);
-    document.getElementById("tank").style.zIndex = 1;
+    document.getElementById("tank").style.zIndex = 1;    
 }

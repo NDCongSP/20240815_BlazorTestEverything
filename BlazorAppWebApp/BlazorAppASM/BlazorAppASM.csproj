@@ -7,26 +7,36 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="images\bitmapLayout.svg" />
+    <Content Remove="resource\bitmapLayout.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="images\motor.svg" />
-    <None Remove="images\scada.svg" />
-    <None Remove="images\twogears.svg" />
+    <None Remove="resource\motor.svg" />
+    <None Remove="resource\scada.svg" />
+    <None Remove="resource\twogears.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="images\bitmapLayout.svg" />
-    <EmbeddedResource Include="images\motor.svg" />
-    <EmbeddedResource Include="images\scada.svg" />
-    <EmbeddedResource Include="images\twogears.svg" />
+    <Content Include="resource\motor.svg" />
+    <Content Include="resource\scada.svg" />
+    <Content Include="resource\twogears.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="resource\bitmapLayout.svg" />
+    <EmbeddedResource Include="resource\motor.svg" />
+    <EmbeddedResource Include="resource\scada.svg" />
+    <EmbeddedResource Include="resource\twogears.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.7" PrivateAssets="all" />
     <PackageReference Include="Radzen.Blazor" Version="*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\logo.svg" />
   </ItemGroup>
 
 </Project>

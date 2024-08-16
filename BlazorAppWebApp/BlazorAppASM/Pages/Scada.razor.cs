@@ -20,8 +20,8 @@ namespace BlazorAppASM.Pages
         {
             await base.OnInitializedAsync();
 
-            using var stream = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.images.scada.svg");
-            //using var stream = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.images.bitmapLayout.svg");
+            using var stream = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.resource.scada.svg");
+            //using var stream = this.GetType().Assembly.GetManifestResourceStream("BlazorAppASM.resource.bitmapLayout.svg");
             stream.Seek(0, SeekOrigin.Begin);
             StreamReader reader = new StreamReader(stream);
             _svg = reader.ReadToEnd();
