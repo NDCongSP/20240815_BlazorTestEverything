@@ -1,0 +1,64 @@
+﻿
+
+<RadzenPanel class="rz-p-4 rz-border-radius-2 rz-mx-auto">
+    <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.SpaceBetween" Gap="1rem">
+        <RadzenCard>
+            <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Change on every input</RadzenText>
+            <RadzenNumeric @oninput=@(args => OnChange(args.Value.ToString(), "New Speed")) aria-label="New Speed" @bind-Value=@CurrentSpeed />
+        </RadzenCard>
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" Gap="1rem">
+            <RadzenButton Click="@((args) => SaveSetPoint(_value))" Variant="Variant.Flat" Text="Save" Style="width: 120px" />
+            <RadzenButton Click="@((args) => _dialogService.Close(null))" Variant="Variant.Flat" Text="Close" Style="width: 120px" />
+        </RadzenStack>
+    </RadzenStack>
+</RadzenPanel>
+
+@code {
+    //biến dùng để truyền vào khi gọi dialog từ form chính.
+    [Parameter] public double CurrentSpeed { get; set; }
+
+    string _value = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        // _notificationService.Notify(new NotificationMessage
+        //     {
+        //         Severity = NotificationSeverity.Success,
+        //         Summary = "Curent speed",
+        //         Detail = CurrentSpeed.ToString(),
+        //         Duration = 1000
+        //     });
+
+        // StateHasChanged();
+    }
+
+    void OnChange(string value, string name)
+    {
+        _value = value;
+        // _notificationService.Notify(new NotificationMessage
+        //     {
+        //         Severity = NotificationSeverity.Info,
+        //         Summary = name,
+        //         Detail = value,
+        //         Duration = 1000
+        //     });
+
+        // StateHasChanged();
+    }
+
+    async void SaveSetPoint(string value)
+    {
+        var confirm = await _dialogService.Confirm("Are you sure saved the info?", "Change set point.", new ConfirmOptions()
+            {
+                OkButtonText = "Yes",
+                CancelButtonText = "No",
+                AutoFocusFirstElement = true,
+            });
+
+        if (confirm == null || confirm == false) return;
+
+        _dialogService.Close(value);
+    }
+}

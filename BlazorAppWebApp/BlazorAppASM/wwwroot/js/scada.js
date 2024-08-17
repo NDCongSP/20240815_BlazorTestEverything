@@ -27,22 +27,22 @@ export function addHandlers(element) {
         await helper.invokeMethodAsync('ScadaTestClick', tankImagemStop.id);
     });
 
-    //var tankImageLight = document.getElementById("off");
-    //tankImageLight.addEventListener("click", async () => {
-    //    await helper.invokeMethodAsync('ScadaTestClick', tankImageLight.id);
-    //});
-    //tankImageLight = document.getElementById("on");
-    //tankImageLight.addEventListener("click", async () => {
-    //    await helper.invokeMethodAsync('ScadaTestClick', tankImageLight.id);
-    //});
-    //tankImageLight = document.getElementById("err");
-    //tankImageLight.addEventListener("click", async () => {
-    //    await helper.invokeMethodAsync('ScadaTestClick', tankImageLight.id);
-    //});
+    var lRun = document.getElementById("run");
+    lRun.addEventListener("click", async () => {
+        await helper.invokeMethodAsync('ScadaTestClick', lRun.id);
+    });
+    var lOff = document.getElementById("off");
+    lOff.addEventListener("click", async () => {
+        await helper.invokeMethodAsync('ScadaTestClick', lOff.id);
+    });
 
-    //var tankImage = document.getElementById("l1");
-    //var tankImage = document.getElementById("l2");
-    //var tankImage = document.getElementById("l3");
+    var lErr = document.getElementById("err");
+    lErr.addEventListener("click", async () => {
+        await helper.invokeMethodAsync('ScadaTestClick', lErr.id);
+    });
 
-   
+    var txtSetpoint = document.getElementById("tspan1");
+    txtSetpoint.addEventListener("click", async () => {
+        await helper.invokeMethodAsync('ScadaTestClick', txtSetpoint.id);
+    });
 }

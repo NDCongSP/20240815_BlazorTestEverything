@@ -6,6 +6,8 @@ using System.Net.NetworkInformation;
 using System.Reflection.Metadata;
 using System.Timers;
 using Microsoft.AspNetCore.Components;
+using BlazorAppASM.Pages.Components;
+using System.Linq.Dynamic.Core.Tokenizer;
 
 namespace BlazorAppASM.Pages
 {
@@ -14,6 +16,7 @@ namespace BlazorAppASM.Pages
         protected string _svg { get; set; }
         protected int _status = 0;
         protected double _speed = 0;
+        protected double _setpointSpeed = 0;
 
         private System.Timers.Timer _timer;
 
@@ -34,8 +37,12 @@ namespace BlazorAppASM.Pages
             }
         }
 
+        /// <summary>
+        /// Method dc gọi ở trong JS event call back. scada.js
+        /// </summary>
+        /// <param name="id"></param>
         [JSInvokable]
-        public void ScadaTestClick(string id)
+        public async void ScadaTestClick(string id)
         {
             _notificationService.Notify(new NotificationMessage
             {
@@ -45,6 +52,35 @@ namespace BlazorAppASM.Pages
                 Duration = 1000
             });
 
+            if (id == "tspan1")
+            {
+                var res = await _dialogService.OpenAsync<DialogPageScadaSet>($"Set Speed",
+                        new Dictionary<string, object>() { { "CurrentSpeed", _setpointSpeed } },
+                        new DialogOptions() { Width = "500", Height = "300px", Resizable = true, Draggable = true, CloseDialogOnOverlayClick = true });
+
+                if (string.IsNullOrEmpty(res))
+                {
+                    _notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Set point error",
+                        Detail = res,
+                    });
+                }
+                else
+                {
+                    _notificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Success,
+                        Summary = "Set point success.",
+                        Detail = res,
+                    });
+
+                    _setpointSpeed = double.TryParse(res, out double value) ? value : 0;
+
+                    await _jsRuntime.InvokeVoidAsync("ChangeValue", "tspan1", _setpointSpeed);
+                }
+            }
             StateHasChanged();
         }
 
@@ -58,6 +94,9 @@ namespace BlazorAppASM.Pages
             stream.Seek(0, SeekOrigin.Begin);
             StreamReader reader = new StreamReader(stream);
             _svg = reader.ReadToEnd();
+
+
+            await _jsRuntime.InvokeVoidAsync("ChangeValue", "tspan1", _setpointSpeed);
 
             #region Timer refresh data
             _timer = new System.Timers.Timer(1000);
