@@ -1,4 +1,6 @@
 ﻿function BlazorChange1(objId, status) {
+    if (objId == null) return;
+
     if (status == 0) {
         document.getElementById(objId).style.fill = "gray";
         document.getElementById("gear_11").style.fill = "gray";
@@ -22,66 +24,110 @@
     }
 }
 
-function UpdateUI(status,mSpeed) {
+function UpdateUI(status, mSpeed) {
+
+
     if (status == 0) {
-        document.getElementById("mStop").style.visibility = "visible";
-        document.getElementById("mRun").style.visibility = "hidden";
-        document.getElementById("mErr").style.visibility = "hidden";
+        var mStop = document.getElementById("mStop");
+        if (mStop) {
+            mStop.style.visibility = "visible";
+        }
+        var mRun = document.getElementById("mRun");
+        if (mRun) {
+            mRun.style.visibility = "hidden";
+        }
+        var mErr = document.getElementById("mErr");
+        if (mErr) {
+            mErr.style.visibility = "hidden";
+        }
 
-        document.getElementById("off").style.visibility = "visible";
-        document.getElementById("run").style.visibility = "hidden";
-        document.getElementById("err").style.visibility = "hidden";
+        //document.getElementById("mStop").style.visibility = "visible";
+        //document.getElementById("mRun").style.visibility = "hidden";
+        //document.getElementById("mErr").style.visibility = "hidden";
 
-        document.getElementById("l1").style.fill = "gray";
-        document.getElementById("l2").style.fill = "gray";
-        document.getElementById("l3").style.fill = "gray";
+        //document.getElementById("off").style.visibility = "visible";
+        //document.getElementById("run").style.visibility = "hidden";
+        //document.getElementById("err").style.visibility = "hidden";
 
-        document.getElementById("mStop").style.visibility = "visible";
-        document.getElementById("mRun").style.visibility = "hidden";
-        document.getElementById("mErr").style.visibility = "hidden";
+        //document.getElementById("l1").style.fill = "gray";
+        //document.getElementById("l2").style.fill = "gray";
+        //document.getElementById("l3").style.fill = "gray";
+
+        //document.getElementById("mStop").style.visibility = "visible";
+        //document.getElementById("mRun").style.visibility = "hidden";
+        //document.getElementById("mErr").style.visibility = "hidden";
     }
     else if (status == 1) {
-        document.getElementById("mStop").style.visibility = "hidden";
-        document.getElementById("mRun").style.visibility = "visible";
-        document.getElementById("mErr").style.visibility = "hidden";
+        var mStop = document.getElementById("mStop");
+        if (mStop) {
+            mStop.style.visibility = "hidden";
+        }
+        var mRun = document.getElementById("mRun");
+        if (mRun) {
+            mRun.style.visibility = "visible";
+        }
+        var mErr = document.getElementById("mErr");
+        if (mErr) {
+            mErr.style.visibility = "hidden";
+        }
 
-        document.getElementById("off").style.visibility = "hidden";
-        document.getElementById("run").style.visibility = "visible";
-        document.getElementById("err").style.visibility = "hidden";
 
-        document.getElementById("l1").style.fill = "green";
-        document.getElementById("l2").style.fill = "green";
-        document.getElementById("l3").style.fill = "green";
+        //document.getElementById("mStop").style?.visibility = "visible";
+        //document.getElementById("mRun").style?.visibility = "hidden";
+        //document.getElementById("mErr").style?.visibility = "hidden";
 
-        document.getElementById("mStop").style.visibility = "hidden";
-        document.getElementById("mRun").style.visibility = "visible";
-        document.getElementById("mErr").style.visibility = "hidden";
+        //document.getElementById("off").style.visibility = "hidden";
+        //document.getElementById("run").style.visibility = "visible";
+        //document.getElementById("err").style.visibility = "hidden";
+
+        //document.getElementById("l1").style.fill = "green";
+        //document.getElementById("l2").style.fill = "green";
+        //document.getElementById("l3").style.fill = "green";
+
+        //document.getElementById("mStop").style.visibility = "hidden";
+        //document.getElementById("mRun").style.visibility = "visible";
+        //document.getElementById("mErr").style.visibility = "hidden";
     }
     else {
-        document.getElementById("mStop").style.visibility = "hidden";
-        document.getElementById("mRun").style.visibility = "hidden";
-        document.getElementById("mErr").style.visibility = "visible";
+        var mStop = document.getElementById("mStop");
+        if (mStop) {
+            mStop.style.visibility = "hidden";
+        }
+        var mRun = document.getElementById("mRun");
+        if (mRun) {
+            mRun.style.visibility = "hidden";
+        }
+        var mErr = document.getElementById("mErr");
+        if (mErr) {
+            mErr.style.visibility = "visible";
+        }
+        //document.getElementById("mStop").style.visibility = "hidden";
+        //document.getElementById("mRun").style.visibility = "hidden";
+        //document.getElementById("mErr").style.visibility = "visible";
 
-        document.getElementById("off").style.visibility = "hidden";
-        document.getElementById("run").style.visibility = "hidden";
-        document.getElementById("err").style.visibility = "visible";
+        //document.getElementById("off").style.visibility = "hidden";
+        //document.getElementById("run").style.visibility = "hidden";
+        //document.getElementById("err").style.visibility = "visible";
 
-        document.getElementById("l1").style.fill = "red";
-        document.getElementById("l2").style.fill = "red";
-        document.getElementById("l3").style.fill = "red";
+        //document.getElementById("l1").style.fill = "red";
+        //document.getElementById("l2").style.fill = "red";
+        //document.getElementById("l3").style.fill = "red";
 
-        document.getElementById("mStop").style.visibility = "hidden";
-        document.getElementById("mRun").style.visibility = "hidden";
-        document.getElementById("mErr").style.visibility = "visible";        
+        //document.getElementById("mStop").style.visibility = "hidden";
+        //document.getElementById("mRun").style.visibility = "hidden";
+        //document.getElementById("mErr").style.visibility = "visible";        
     }
 
-    document.getElementById("tspan1").textContent = Math.round(mSpeed,2);
-    document.getElementById("tank").style.zIndex = 1;    
+    //document.getElementById("tspan1").textContent = Math.round(mSpeed,2);
+    //document.getElementById("l1").style.zIndex = 1;    
 }
 
 //đc gọi ở sự kiện onclick trong cái ảnh SVG, element nào dùng thì thêm onclick vào rồi tạo funtion tương ứng.
 function testClick(e) {
     //console.log(e)
     //console.log(e.srcElement.id)
+
+    //bỏ dòng dưới vào trong snhr SVG ở element nào cần click
+    //onclick="testClick(event)"
     DotNet.invokeMethodAsync('BlazorAppASM', 'Click', e.srcElement.id);
 }

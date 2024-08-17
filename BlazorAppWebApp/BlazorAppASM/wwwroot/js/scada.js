@@ -17,15 +17,15 @@ export function addHandlers(element) {
         await helper.invokeMethodAsync('ScadaTestClick', tankImagemRun.id);
     });
 
-    //var tankImagemErr = document.getElementById("mErr");
-    //tankImagemErr.addEventListener("click", async () => {
-    //    await helper.invokeMethodAsync('ScadaTestClick', tankImagemErr.id);
-    //});
+    var tankImagemErr = document.getElementById("mErr");
+    tankImagemErr.addEventListener("click", async () => {
+        await helper.invokeMethodAsync('ScadaTestClick', tankImagemErr.id);
+    });
 
-    //var tankImagemStop = document.getElementById("mStop");
-    //tankImagemStop.addEventListener("click", async () => {
-    //    await helper.invokeMethodAsync('ScadaTestClick', tankImagemStop.id);
-    //});
+    var tankImagemStop = document.getElementById("mStop");
+    tankImagemStop.addEventListener("click", async () => {
+        await helper.invokeMethodAsync('ScadaTestClick', tankImagemStop.id);
+    });
 
     //var tankImageLight = document.getElementById("off");
     //tankImageLight.addEventListener("click", async () => {

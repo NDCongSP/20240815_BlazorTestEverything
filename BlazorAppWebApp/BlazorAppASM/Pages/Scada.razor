@@ -2,11 +2,6 @@
 @implements IAsyncDisposable
 
 <RadzenPanel class="rz-p-4 rz-border-radius-2 rz-mx-4">
-    @*  <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
-    <RadzenColumn SizeXS="12" class="rz-mx-auto">
-    @((MarkupString)_svg)
-    </RadzenColumn>
-    </RadzenRow> *@
     <div @ref=elementRef>
         @((MarkupString)_svg)
     </div>
@@ -14,44 +9,44 @@
 
 @code {
     //cách để gọi sự kiện khi nhấn vào vị trí bất kỳ của ảnh trên web
-    private IJSObjectReference? module;
-    private DotNetObjectReference<Scada>? objRef;
-    private ElementReference elementRef;
+    // private IJSObjectReference? module;
+    // private DotNetObjectReference<Scada>? objRef;
+    // private ElementReference elementRef;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            module = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./js/scada.js");
-            objRef = DotNetObjectReference.Create(this);
+    // protected override async Task OnAfterRenderAsync(bool firstRender)
+    // {
+    //     if (firstRender)
+    //     {
+    //         module = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./js/scada.js");
+    //         objRef = DotNetObjectReference.Create(this);
 
-            await module.InvokeVoidAsync("assignDotNetHelper", elementRef, objRef);
-            await module.InvokeVoidAsync("addHandlers", elementRef);
-        }
-    }
+    //         await module.InvokeVoidAsync("assignDotNetHelper", elementRef, objRef);
+    //         await module.InvokeVoidAsync("addHandlers", elementRef);
+    //     }
+    // }
 
-    [JSInvokable]
-    public void ScadaTestClick(string id)
-    {
-        _notificationService.Notify(new NotificationMessage
-        {
-           Severity = NotificationSeverity.Info,
-                Summary = $"You just pressed {id}",
-           Detail = id,
-           Duration = 2000
-        });
+    // [JSInvokable]
+    // public void ScadaTestClick(string id)
+    // {
+    //     _notificationService.Notify(new NotificationMessage
+    //         {
+    //             Severity = NotificationSeverity.Info,
+    //             Summary = $"You just pressed {id}",
+    //             Detail = id,
+    //             Duration = 1000
+    //         });
 
-        StateHasChanged();
-    }
+    //     StateHasChanged();
+    // }
 
-    async ValueTask IAsyncDisposable.DisposeAsync()
-    {
-        if (module is not null)
-        {
-            await module.DisposeAsync();
-        }
+    // async ValueTask IAsyncDisposable.DisposeAsync()
+    // {
+    //     if (module is not null)
+    //     {
+    //         await module.DisposeAsync();
+    //     }
 
-        objRef?.Dispose();
-    }
+    //     objRef?.Dispose();
+    // }
 }
 
