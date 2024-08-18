@@ -41,8 +41,13 @@ export function addHandlers(element) {
         await helper.invokeMethodAsync('ScadaTestClick', lErr.id);
     });
 
-    var txtSetpoint = document.getElementById("tspan1");
+    var txtSetpoint = document.getElementById("tspan_txtMotorSetSpeed");
     txtSetpoint.addEventListener("click", async () => {
         await helper.invokeMethodAsync('ScadaTestClick', txtSetpoint.id);
+    });
+
+    var txtSpeed = document.getElementById("tspan_txtMotorSpeed");
+    txtSpeed.addEventListener("click", async () => {
+        await helper.invokeMethodAsync('ScadaTestClick', txtSpeed.id);
     });
 }

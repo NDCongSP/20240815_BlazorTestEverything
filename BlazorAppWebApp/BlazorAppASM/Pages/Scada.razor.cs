@@ -52,7 +52,7 @@ namespace BlazorAppASM.Pages
                 Duration = 1000
             });
 
-            if (id == "tspan1")
+            if (id == "tspan_txtMotorSetSpeed")
             {
                 var res = await _dialogService.OpenAsync<DialogPageScadaSet>($"Set Speed",
                         new Dictionary<string, object>() { { "CurrentSpeed", _setpointSpeed } },
@@ -62,8 +62,8 @@ namespace BlazorAppASM.Pages
                 {
                     _notificationService.Notify(new NotificationMessage
                     {
-                        Severity = NotificationSeverity.Error,
-                        Summary = "Set point error",
+                        Severity = NotificationSeverity.Warning,
+                        Summary = "Set point not change.",
                         Detail = res,
                     });
                 }
@@ -78,7 +78,7 @@ namespace BlazorAppASM.Pages
 
                     _setpointSpeed = double.TryParse(res, out double value) ? value : 0;
 
-                    await _jsRuntime.InvokeVoidAsync("ChangeValue", "tspan1", _setpointSpeed);
+                    await _jsRuntime.InvokeVoidAsync("ChangeValue", "tspan_txtMotorSetSpeed", _setpointSpeed);
                 }
             }
             StateHasChanged();
@@ -96,7 +96,7 @@ namespace BlazorAppASM.Pages
             _svg = reader.ReadToEnd();
 
 
-            await _jsRuntime.InvokeVoidAsync("ChangeValue", "tspan1", _setpointSpeed);
+            await _jsRuntime.InvokeVoidAsync("ChangeValue", "tspan_txtMotorSetSpeed", _setpointSpeed);
 
             #region Timer refresh data
             _timer = new System.Timers.Timer(1000);
@@ -109,7 +109,7 @@ namespace BlazorAppASM.Pages
         {
             //try
             {
-                await _jsRuntime.InvokeVoidAsync("UpdateUI", _status, _speed);
+                await _jsRuntime.InvokeVoidAsync("UpdateUI", _status, Math.Round(_speed, 2));
 
                 if (_status < 2) _status += 1;
                 else _status = 0;
@@ -129,7 +129,8 @@ namespace BlazorAppASM.Pages
 
         async ValueTask IAsyncDisposable.DisposeAsync()
         {
-            _timer.Dispose();
+            _timer?.Dispose();
+
             if (module is not null)
             {
                 await module.DisposeAsync();

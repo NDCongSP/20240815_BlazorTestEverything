@@ -50,7 +50,7 @@
 
     async void SaveSetPoint(string value)
     {
-        var confirm = await _dialogService.Confirm("Are you sure saved the info?", "Change set point.", new ConfirmOptions()
+        var confirm = await _dialogService.Confirm($"Are you sure saved the setpoint = {value}?", "Change set point.", new ConfirmOptions()
             {
                 OkButtonText = "Yes",
                 CancelButtonText = "No",

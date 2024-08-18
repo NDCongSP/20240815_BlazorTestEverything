@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Content Include="resource\motor.svg" />
-    <Content Include="resource\scada.svg" />
     <Content Include="resource\twogears.svg" />
   </ItemGroup>
 

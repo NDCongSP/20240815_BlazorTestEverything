@@ -24,6 +24,7 @@
     }
 }
 
+//function thay đổi giá trị của các label và textbox.
 function ChangeValue(objId, value) {
     if (document.getElementById(objId) == null) return;
 
@@ -192,12 +193,12 @@ function UpdateUI(status, mSpeed) {
         }
     }
 
-    //_elementIdd = document.getElementById("tspan1");
-    //if (_elementId) {
-    //    _elementId.textContent = Math.round(mSpeed, 2);
-    //}
+    _elementId = document.getElementById("tspan_txtMotorSpeed");
+    if (_elementId) {
+        _elementId.textContent = mSpeed;
+    }
 
-    _elementIdd = document.getElementById("tank");
+    _elementId = document.getElementById("tank");
     if (_elementId) {
         _elementId.style.zIndex = 1;
     }
