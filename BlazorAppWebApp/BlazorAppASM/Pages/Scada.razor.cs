@@ -114,7 +114,7 @@ namespace BlazorAppASM.Pages
                 if (_status < 2) _status += 1;
                 else _status = 0;
 
-                if (_speed < 1000) _speed += 10.3;
+                if (_speed <= _setpointSpeed) _speed += 10.3;
                 else _speed = 0;
 
                 StateHasChanged(); // NOTE: MUST CALL StateHasChanged() BECAUSE THIS IS TRIGGERED BY A TIMER INSTEAD OF A USER EVENT
