@@ -15,6 +15,7 @@
     <None Remove="resource\motor.svg" />
     <None Remove="resource\scada.svg" />
     <None Remove="resource\twogears.svg" />
+    <None Remove="resource\wms.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +28,7 @@
     <EmbeddedResource Include="resource\motor.svg" />
     <EmbeddedResource Include="resource\scada.svg" />
     <EmbeddedResource Include="resource\twogears.svg" />
+    <EmbeddedResource Include="resource\wms.svg" />
   </ItemGroup>
 
   <ItemGroup>

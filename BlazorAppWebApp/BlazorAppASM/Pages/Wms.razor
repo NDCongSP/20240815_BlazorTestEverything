@@ -1,20 +1,11 @@
-﻿@page "/graphic"
+﻿@page "/"
+@implements IAsyncDisposable
 
-<RadzenPanel class="rz-p-4 rz-border-radius-2 rz-mx-auto">
+<RadzenPanel class="rz-p-4 rz-border-radius-2 rz-mx-4">
     <figure>
-        <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Center">
-            <RadzenButton Click=@(async args => OnClick("Success")) Text="Change" Icon="add_circle"
-                          ButtonStyle="ButtonStyle.Primary" />
-            <RadzenRow>
-                <RadzenColumn SizeXS="12" SizeMD="6" class="rz-mx-auto">
-                    @((MarkupString)_svg1)
-                </RadzenColumn>
-                <RadzenColumn SizeXS="12" SizeMD="6" class="rz-mx-auto">
-                    @((MarkupString)_svgMotor)
-                </RadzenColumn>
-            </RadzenRow>
+        <div @ref=elementRef>
             @((MarkupString)_svg)
-        </RadzenStack>
+        </div>
     </figure>
 </RadzenPanel>
 
@@ -68,4 +59,3 @@
             overflow: hidden;
         }
 </style>
-

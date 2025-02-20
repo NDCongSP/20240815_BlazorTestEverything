@@ -204,6 +204,50 @@ function UpdateUI(status, mSpeed) {
     }
 }
 
+function UpdateUIWMS(objId,status, mSpeed) {
+
+    if (document.getElementById(objId) == null) return;
+
+    if (status == 0) {
+        _elementId = document.getElementById(objId);
+        if (_elementId) {
+            _elementId.style.fill = "gray";
+        }
+
+        document.getElementById("Lifter4_3_9_stop").style.visibility = "hidden";
+        document.getElementById("Lifter4_3_9_error").style.visibility = "hidden";
+        document.getElementById("Lifter4_3_9_run").style.visibility = "hidden";
+        document.getElementById("Lifter4_3_9_stop_pallet").style.visibility = "visible";
+        document.getElementById("Lifter4_3_9_error_pallet").style.visibility = "hidden";
+        document.getElementById("Lifter4_3_9_run_pallet").style.visibility = "hidden";
+
+        document.getElementById("BT5_2_1_stop").style.visibility = "visible";
+        document.getElementById("BT5_2_1_error").style.visibility = "hidden";
+        document.getElementById("BT5_2_21_run").style.visibility = "hidden";
+        document.getElementById("BT5_2_1_stop_pallet").style.visibility = "hidden";
+        document.getElementById("BT5_2_1_error_pallet").style.visibility = "hidden";
+    }
+    else {
+        _elementId = document.getElementById(objId);
+        if (_elementId) {
+            _elementId.style.fill = "green";
+
+            document.getElementById("Lifter4_3_9_stop").style.visibility = "hidden";
+            document.getElementById("Lifter4_3_9_error").style.visibility = "hidden";
+            document.getElementById("Lifter4_3_9_run").style.visibility = "hidden";
+            document.getElementById("Lifter4_3_9_stop_pallet").style.visibility = "hidden";
+            document.getElementById("Lifter4_3_9_error_pallet").style.visibility = "hidden";
+            document.getElementById("Lifter4_3_9_run_pallet").style.visibility = "visible";
+
+            document.getElementById("BT5_2_1_stop").style.visibility = "hidden";
+            document.getElementById("BT5_2_1_error").style.visibility = "hidden";
+            document.getElementById("BT5_2_21_run").style.visibility = "visible";
+            document.getElementById("BT5_2_1_stop_pallet").style.visibility = "hidden";
+            document.getElementById("BT5_2_1_error_pallet").style.visibility = "hidden";
+        }
+    }
+}
+
 //đc gọi ở sự kiện onclick trong cái ảnh SVG, element nào dùng thì thêm onclick vào rồi tạo funtion tương ứng.
 function testClick(e) {
     //console.log(e)
