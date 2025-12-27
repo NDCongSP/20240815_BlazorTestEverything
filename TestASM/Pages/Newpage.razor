@@ -3,6 +3,7 @@
 @* @implements IAsyncDisposable *@
 
 <div class="cus-body">
+    <button class="cus-btn" type="button" onclick=@(async ()=>OpenPrint())>Nhấn để in</button>
     <h3 id="c-h3">Progress bar.</h3>
     <button class="cus-btn" type="button" onclick=@(async ()=>RefreshData())>Nhấn để thay đổi giá trị</button>
 
@@ -48,6 +49,27 @@
     }
 
     private async void RefreshData()
+    {
+        try
+        {
+            _html += 10;
+            _css += 10;
+
+            if (_html >= 101) _html = 0;
+            if (_css >= 101) _css = 10;
+
+            await _jsRuntime.InvokeVoidAsync("ChangeValue", "prog1", $"{_html}%");
+            await _jsRuntime.InvokeVoidAsync("ChangeValue", "prog2", $"{_css}%");
+
+            StateHasChanged(); // NOTE: MUST CALL StateHasChanged() BECAUSE THIS IS TRIGGERED BY A TIMER INSTEAD OF A USER EVENT
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.ToString());
+        }
+    }
+
+     private async void OpenPrint()
     {
         try
         {
